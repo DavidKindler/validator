@@ -1,0 +1,56 @@
+
+<div class="row">
+<div class="col-sm-12">
+<h3>Check your html and javascript code using <a target="_blank" href="https://www.npmjs.org/package/html5-lint">Mozilla's HTML5 Validator instance</a> and <a target="_blank" href="https://www.npmjs.org/package/jshint">JSHint.</a> </h3>
+<h4>For more info check out the <a href="about">about</a> page. If you have suggestions or comments please see our <a href="contact">contact</a> page.</h4>
+
+
+{{#if data.valid}}
+<h3><b>URL:</b>&nbsp;<a href="{{data.url}}" target="_blank"<span style="color:#e66a08;">{{data.url}}</span></a></h3>
+ <table  class="table table-bordered">
+  {{#if data.out.html}}
+<tr> <td><b>HTML:</b></td><td> {{htmlErrors}} errors and {{htmlWarnings}} warnings found </td><td><a href="#" class="scroll-link" data-id="htmlErrors">Scroll down</a></td></tr>
+<!-- <tr><td><b>Address:</b></td><td>{{data.url}}</td></tr> -->
+<!-- </table>
+<table  class="table table-bordered">
+ -->
+{{/if}}
+ <tr> <td><b>Javascript:</b></td><td> {{data.out.js.length}} errors found </td><td><a href="#" class="scroll-link" data-id="jsErrors">Scroll down</a></td></tr>
+<!-- <tr><td><b>Address:</b></td><td>{{data.url}}</td></tr> -->
+</table>
+
+ {{#if data.out.html}}
+ <h4 class="text-center alert alert-danger" id="htmlErrors">HTML errors found</h4>
+ 
+  {{#each data.out.html.messages}}
+  <div class="errorBlock {{typeClass type}}">
+  <p class="info "><i>LINE: {{lastLine}}, COLUMN: {{lastColumn}}:</i>&nbsp;&nbsp;<b>{{type}} ==> {{message}}</b> </p>
+ <code class="line"> {{line lastLine}} </code>
+   </p></div>
+ 
+  {{/each}}
+
+{{/if}}
+<h3 class="text-center alert alert-danger" id="jsErrors">Javascript errors found</h3>
+
+
+{{#each data.out.js}}
+<div class="errorBlock typeError">
+  <p class="info "><i>LINE: {{error.Line}}:</i>&nbsp;&nbsp;<b>{{error.id}} ==> {{error.raw}}</b> </p>
+ <code class="line"> {{line error.line}} </code>
+   </p></div>
+
+
+ {{/each}}
+
+{{!-- <p>{{data.pretty}}</p> --}}
+
+{{/if}}
+
+{{#if invalid}}
+URL NOT PROPERLY FORMED OR INVALID
+{{/if}}
+
+</div>
+</div>
+

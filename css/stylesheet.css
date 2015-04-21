@@ -1,0 +1,15 @@
+	body {padding-top: 60px; padding-bottom: 30px; font-family: "Open Sans", sans-serif;}
+	.errorBlock {
+		border:1px solid #ccc;
+		padding: 10px;
+	}
+	.errorBlock .info {
+
+	}
+
+	.errorBlock.typeError {background-color: #ff9999;}
+	.errorBlock.typeWarning {background-color:lightyellow;}
+
+	.navbar-brand {font-size:29px; background-color:#e66a08;  padding: 7px 15px;}
+	.navbar-inverse .navbar-brand {color:white;}
+	.navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-brand:active, .navbar-inverse .navbar-brand:focus  {background-color:#e66a08;}
